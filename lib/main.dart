@@ -1,4 +1,4 @@
-import 'package:educational_app/intro_page.dart';
+import 'package:educational_app/utils/splash_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      home: const IntroPage(),
+      home: const LogoPage(),
     );
   }
 }
