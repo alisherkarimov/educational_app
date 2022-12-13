@@ -1,3 +1,4 @@
+import 'package:educational_app/loginpage/view/login_page.dart';
 import 'package:educational_app/utils/colors.dart';
 import 'package:educational_app/utils/strings.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +31,7 @@ class _IntroPageState extends State<IntroPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: FontColor.colors.backgroundColor,
+      backgroundColor: FontColor.introColors.backgroundColor,
       body: Stack(
         alignment: Alignment.bottomCenter,
         children: [
@@ -107,7 +108,7 @@ class _IntroPageState extends State<IntroPage> {
                       Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (_) => const HomePage(),
+                            builder: (_) => const LogInPage(),
                           ));
                     }
                   },

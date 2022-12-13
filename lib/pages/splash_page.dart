@@ -1,6 +1,6 @@
-import 'package:educational_app/pages/home_page.dart';
-import 'package:educational_app/pages/intro_page.dart';
 import 'package:flutter/material.dart';
+
+import 'intro_page.dart';
 
 class LogoPage extends StatefulWidget {
   const LogoPage({Key? key}) : super(key: key);
@@ -28,11 +28,18 @@ class _LogoPageState extends State<LogoPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff666d73),
-      body: Center(
-        child: Image.asset(
-          'assets/images/logo.png',
-          width: 160,
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(begin: Alignment.topCenter, colors: [
+            Color(0xff666d73),
+            Color(0xef666d73),
+          ]),
+        ),
+        child: Center(
+          child: Image.asset(
+            'assets/images/logo.png',
+            width: 160,
+          ),
         ),
       ),
     );

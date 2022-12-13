@@ -37,7 +37,7 @@ class IntroWidget extends StatelessWidget {
                 Text(
                   title,
                   style: TextStyle(
-                      color: FontColor.colors.titleColor,
+                      color: FontColor.introColors.titleColor,
                       fontSize: 24,
                       fontWeight: FontWeight.bold),
                 ),
@@ -46,7 +46,7 @@ class IntroWidget extends StatelessWidget {
                 Text(
                   content,
                   style: TextStyle(
-                      color: FontColor.colors.contentColor, fontSize: 14),
+                      color: FontColor.introColors.contentColor, fontSize: 14),
                 ),
               ],
             ),
