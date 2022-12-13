@@ -2,18 +2,15 @@ import 'package:educational_app/utils/colors.dart';
 import 'package:educational_app/utils/strings.dart';
 import 'package:flutter/material.dart';
 
+import '../widgets/indecator_widget.dart';
+import '../widgets/intro_widget.dart';
 import 'home_page.dart';
-// import 'package:intro_ui_app/screens/home_screen.dart';
 
 class IntroPage extends StatefulWidget {
   const IntroPage({Key? key}) : super(key: key);
-
-  static const id = 'intro_screen';
-
   @override
   State<IntroPage> createState() => _IntroPageState();
 }
-
 class _IntroPageState extends State<IntroPage> {
   late PageController _pageController;
   int currentIndex = 0;
@@ -41,10 +38,16 @@ class _IntroPageState extends State<IntroPage> {
             controller: _pageController,
             onPageChanged: (int page) => setState(() => currentIndex = page),
             children: [
-              makePage('assets/intro/intro_image_1.png', Strings.stepOneTitle,
-                  Strings.stepOneContent),
-              makePage('assets/intro/intro_image_2.png', Strings.stepTwoTitle,
-                  Strings.stepTwoContent),
+              IntroWidget(
+                'assets/intro/intro_image_1.png',
+                content: Strings.stepOneContent,
+                title: Strings.stepOneTitle,
+              ),
+              IntroWidget(
+                'assets/intro/intro_image_2.png',
+                content: Strings.stepTwoContent,
+                title: Strings.stepTwoTitle,
+              ),
             ],
           ),
           // #indecator
@@ -53,7 +56,16 @@ class _IntroPageState extends State<IntroPage> {
             bottom: 150,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: _buildIndicator(),
+              children: [
+                if (_pageController.initialPage == currentIndex)
+                  IndicatorWidget(true),
+                if (_pageController.initialPage != currentIndex)
+                  IndicatorWidget(false),
+                if (_pageController.initialPage == currentIndex)
+                  IndicatorWidget(false),
+                if (_pageController.initialPage != currentIndex)
+                  IndicatorWidget(true),
+              ], // _buildIndicator(),
             ),
           ),
           // indicator
@@ -113,74 +125,5 @@ class _IntroPageState extends State<IntroPage> {
         ],
       ),
     );
-  }
-
-  Widget makePage(image, title, content) {
-    return Container(
-      margin: const EdgeInsets.all(12).copyWith(top: 0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(height: 54),
-          // #image
-          SizedBox(
-            height: 323,
-            child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
-                child: Image.asset(image)),
-          ),
-
-          Padding(
-            padding: const EdgeInsets.all(12.0).copyWith(top: 0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // #title
-                Text(
-                  title,
-                  style: TextStyle(
-                      color: FontColor.colors.titleColor,
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 7),
-                // #content
-                Text(
-                  content,
-                  style: TextStyle(
-                      color: FontColor.colors.contentColor, fontSize: 14),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _indicator(bool isActive) {
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 300),
-      height: 4,
-      width: isActive ? 30 : 5,
-      margin: const EdgeInsets.only(right: 5),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(2),
-      ),
-    );
-  }
-
-  List<Widget> _buildIndicator() {
-    List<Widget> indicators = [];
-    for (int i = 0; i < 2; i++) {
-      if (currentIndex == i) {
-        indicators.add(_indicator(true));
-      } else {
-        indicators.add(_indicator(false));
-      }
-    }
-    return indicators;
   }
 }

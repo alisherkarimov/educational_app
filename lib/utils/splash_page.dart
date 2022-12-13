@@ -1,4 +1,5 @@
 import 'package:educational_app/pages/home_page.dart';
+import 'package:educational_app/pages/intro_page.dart';
 import 'package:flutter/material.dart';
 
 class LogoPage extends StatefulWidget {
@@ -18,7 +19,7 @@ class _LogoPageState extends State<LogoPage> {
         Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => const HomePage(),
+              builder: (context) => const IntroPage(),
             ));
       },
     );
