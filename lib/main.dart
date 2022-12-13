@@ -1,4 +1,4 @@
-import 'package:educational_app/pages/splash_page.dart';
+import 'package:educational_app/splash_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {

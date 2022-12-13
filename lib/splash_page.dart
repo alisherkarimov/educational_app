@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'intro_page.dart';
+import 'intropage/view/intro_page.dart';
 
 class LogoPage extends StatefulWidget {
   const LogoPage({Key? key}) : super(key: key);

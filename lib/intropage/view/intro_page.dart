@@ -3,15 +3,16 @@ import 'package:educational_app/utils/colors.dart';
 import 'package:educational_app/utils/strings.dart';
 import 'package:flutter/material.dart';
 
-import '../widgets/indecator_widget.dart';
-import '../widgets/intro_widget.dart';
-import 'home_page.dart';
+import '../widget/indecator_widget.dart';
+import '../widget/intro_widget.dart';
 
 class IntroPage extends StatefulWidget {
   const IntroPage({Key? key}) : super(key: key);
+
   @override
   State<IntroPage> createState() => _IntroPageState();
 }
+
 class _IntroPageState extends State<IntroPage> {
   late PageController _pageController;
   int currentIndex = 0;
@@ -104,13 +105,11 @@ class _IntroPageState extends State<IntroPage> {
                 // #skip
                 GestureDetector(
                   onTap: () {
-                    if (currentIndex == 1) {
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) => const LogInPage(),
-                          ));
-                    }
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const LogInPage(),
+                        ));
                   },
                   child: const Text(
                     'Skip',
